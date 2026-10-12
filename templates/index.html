@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Weekly Jira Status Generator</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; background: #f3f5f8; color: #1f2937; }
+      .container { max-width: 1100px; margin: 0 auto; }
+      .panel { background: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+      label { display: block; font-weight: bold; margin-bottom: 0.35rem; }
+      input, select { width: 100%; box-sizing: border-box; padding: 0.5rem; margin-bottom: 0.75rem; }
+      textarea { width: 100%; min-height: 280px; box-sizing: border-box; padding: 0.75rem; }
+      .error { background: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; }
+      .success { background: #dcfce7; border: 1px solid #86efac; color: #166534; padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; }
+      .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+      button { background: #2563eb; color: white; border: none; padding: 0.75rem 1rem; border-radius: 6px; cursor: pointer; }
+      .secondary { background: #475569; }
+      pre { white-space: pre-wrap; background: #f8fafc; padding: 1rem; border-radius: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Weekly Jira Status Generator</h1>
+
+      {% if errors %}
+        <div class="error">
+          {% for error in errors %}
+            <div>{{ error }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if saved_report %}
+        <div class="success">{{ saved_report }}</div>
+      {% endif %}
+
+      <div class="panel">
+        <form method="post" action="{{ url_for('generate_report') }}">
+          <div class="grid">
+            <div>
+              <label for="base_url">Jira Base URL</label>
+              <input id="base_url" name="base_url" value="{{ config.get('base_url', '') }}" />
+            </div>
+            <div>
+              <label for="project_key">Project Key</label>
+              <input id="project_key" name="project_key" value="{{ config.get('project_key', '') }}" />
+            </div>
+            <div>
+              <label for="timezone">Project Timezone</label>
+              <input id="timezone" name="timezone" value="{{ config.get('timezone', '') }}" />
+            </div>
+            <div>
+              <label for="issue_type_mapping">Issue Types</label>
+              <input id="issue_type_mapping" name="issue_type_mapping" value="{{ config.get('issue_type_mapping', '') }}" />
+            </div>
+            <div>
+              <label for="done_statuses">Done Statuses</label>
+              <input id="done_statuses" name="done_statuses" value="{{ config.get('done_statuses', '') }}" />
+            </div>
+            <div>
+              <label for="blocked_signals">Blocked Signals</label>
+              <input id="blocked_signals" name="blocked_signals" value="{{ config.get('blocked_signals', '') }}" />
+            </div>
+            <div>
+              <label for="planning_source">Next-week Planning Source</label>
+              <input id="planning_source" name="planning_source" value="{{ config.get('planning_source', '') }}" />
+            </div>
+            <div>
+              <label for="health">Default Health</label>
+              <select id="health" name="health">
+                <option value="Green" {% if config.get('health') == 'Green' %}selected{% endif %}>Green</option>
+                <option value="Amber" {% if config.get('health') == 'Amber' or not config.get('health') %}selected{% endif %}>Amber</option>
+                <option value="Red" {% if config.get('health') == 'Red' %}selected{% endif %}>Red</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="actions" style="margin-top: 1rem;">
+            <button type="submit">Generate Preview</button>
+          </div>
+        </form>
+      </div>
+
+      {% if reporting_start and reporting_end %}
+      <div class="panel">
+        <h2>Reporting window</h2>
+        <p><strong>{{ reporting_start }}</strong> to <strong>{{ reporting_end }}</strong></p>
+      </div>
+      {% endif %}
+
+      {% if preview %}
+      <div class="panel">
+        <h2>Customer Draft Preview</h2>
+        <pre>{{ preview }}</pre>
+
+        <form method="post" action="{{ url_for('save_report') }}">
+          <input type="hidden" name="audience" value="customer" />
+          <input type="hidden" name="report_text" value="{{ preview }}" />
+          <input type="hidden" name="report_date" value="{{ reporting_start if reporting_start else '2026-10-12' }}" />
+          {% for key, value in config.items() %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}" />
+          {% endfor %}
+          <div class="actions">
+            <button type="submit" class="secondary">Save Customer Draft</button>
+          </div>
+        </form>
+      </div>
+      {% endif %}
+
+      {% if leadership_preview %}
+      <div class="panel">
+        <h2>Leadership Draft Preview</h2>
+        <pre>{{ leadership_preview }}</pre>
+
+        <form method="post" action="{{ url_for('save_report') }}">
+          <input type="hidden" name="audience" value="leadership" />
+          <input type="hidden" name="report_text" value="{{ leadership_preview }}" />
+          <input type="hidden" name="report_date" value="{{ reporting_start if reporting_start else '2026-10-12' }}" />
+          {% for key, value in config.items() %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}" />
+          {% endfor %}
+          <div class="actions">
+            <button type="submit" class="secondary">Save Leadership Draft</button>
+          </div>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

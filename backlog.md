@@ -2,56 +2,60 @@
 
 This backlog is based on the project specification in [project_spec.md](./project_spec.md) and assumes a minimal working local Flask app is the first priority, with Jira integration and full production-hardening layered in after the core flow works.
 
+Current progress: the local Flask app shell, config validation, reporting window logic, demo snapshot generation, and local preview/save flow are implemented in the workspace.
+
+Status note: this is a working local demo of the weekly status workflow, not a live Jira-integrated system. The application UI and mock report data are present, but there is no production Jira PAT flow, no Jira API client, no changelog-based completed-work logic, and no real connectivity/permission validation yet. Phase 3+ items remain pending until those live-data behaviors are implemented.
+
 ## Phase 1: Setup
 
-- [ ] Confirm the project baseline and target runtime
+- [x] Confirm the project baseline and target runtime
   - Verify Python 3 version constraints and confirm Flask is the chosen web framework.
   - Record the initial local-only deployment constraints (loopback-only app, no remote hosting).
-- [ ] Scaffold the application structure
+- [x] Scaffold the application structure
   - Create the package layout for the Flask app, config, services, templates, and report output.
   - Add a `reports/` directory for generated Markdown files and a safe output convention.
-- [ ] Create the initial dependency manifest
+- [x] Create the initial dependency manifest
   - Add Flask and any HTTP client dependencies needed for Jira API calls.
   - Confirm pytest is included for early unit testing.
-- [ ] Define project configuration model
+- [x] Define project configuration model
   - Create a config structure for Jira base URL, project key, timezone, issue type mappings, done statuses, blocker signals, and planning source.
   - Keep configuration local to the machine; do not persist PATs.
-- [ ] Set up environment and local-run workflow
+- [x] Set up environment and local-run workflow
   - Create a repeatable local run command for the app.
   - Document how to start the server on `127.0.0.1` and how to stop it.
-- [ ] Establish the initial project folders and conventions
+- [x] Establish the initial project folders and conventions
   - Create directories for routes, forms, services, templates, and report rendering.
   - Add helper modules for validation, Jira API access, and Markdown rendering.
 
 ## Phase 2: Core Features
 
-- [ ] Build the Flask application shell
+- [x] Build the Flask application shell
   - Create the app factory and route structure for configuration, preview, and save flows.
   - Add a home page that explains the weekly report workflow.
-- [ ] Implement configuration UI and validation flow
+- [x] Implement configuration UI and validation flow
   - Add a form for Jira base URL, project key, timezone, issue type mappings, done statuses, and planning source.
   - Validate required fields before allowing generation to proceed.
   - Show actionable error messages when config values are missing or inconsistent.
-- [ ] Build the reporting period calculation logic
+- [x] Build the reporting period calculation logic
   - Compute the previous Monday through Sunday window in the configured project timezone.
   - Ensure the logic is inclusive of Monday 00:00 and exclusive of the following Monday 00:00.
   - Allow the user to review the selected week before generating.
-- [ ] Implement a report data model
+- [x] Implement a report data model
   - Define a normalized data object for issue counts, completed work, remaining open work, next week's plan, and blockers.
   - Separate Jira-derived facts from manual review fields like health rating and rationale.
-- [ ] Create the customer and leadership draft templates
+- [x] Create the customer and leadership draft templates
   - Build the consistent Markdown structure for both audience drafts.
   - Include headings for health, executive summary, completed items, remaining work, next week, blockers, and support needed.
   - Add audience-specific redaction rules for customer output.
-- [ ] Implement Markdown rendering for both reports
+- [x] Implement Markdown rendering for both reports
   - Render deterministic output from the report model.
   - Ensure the same data snapshot feeds both draft outputs.
   - Add placeholders for manual edits while keeping the structure consistent.
-- [ ] Implement preview and editing workflow
+- [x] Implement preview and editing workflow
   - Show the generated draft in the browser before saving.
   - Allow the Delivery Manager to review and edit the Markdown in-place.
   - Keep a clear distinction between Jira facts and manual commentary.
-- [ ] Implement safe file saving behavior
+- [x] Implement safe file saving behavior
   - Save Markdown drafts under `reports/` with year/date/audience naming conventions.
   - Prevent silent overwrite by prompting or creating a unique filename.
   - Confirm the save path before final write.
