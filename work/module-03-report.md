@@ -5,7 +5,7 @@
 - Email: mahesh.aluvala@gmail.com
 
 ## Commit History
-27385b7 Add multiply function
+fb87bca Add multiply function
  README.md     | 19 ++++++++++++++++---
  calculator.py |  5 +++++
  main.py       |  6 +++++-
