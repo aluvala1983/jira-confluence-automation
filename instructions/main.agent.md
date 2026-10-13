@@ -12,3 +12,5 @@ Each entry below is an instruction file with a one-line description. Keywords he
   + Keywords: run tests, unit tests, test coverage, pytest, coverage report
 - [`./instructions/validate-safe-report-output.agent.md`](./validate-safe-report-output.agent.md) — Validate report content and destination before safe Markdown output.
   + Keywords: validate report, safe report output, report filename, customer report, prevent overwrite
+- [`./instructions/work-with-jira-reporting-data.agent.md`](./work-with-jira-reporting-data.agent.md) — Fetch and format Jira issues, draft common JQL queries, and summarize sprint data.
+  + Keywords: Jira workflow, Jira issues, JQL query, sprint summary, issue data
