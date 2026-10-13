@@ -8,6 +8,10 @@
       ],
       "cwd": "${workspaceFolder}"
     },
+    "github": { 
+      "type": "http", 
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
     "get_time": {
       "type": "stdio",
       "command": "${workspaceFolder}/.venv/bin/python",
