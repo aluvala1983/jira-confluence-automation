@@ -1,0 +1,34 @@
+{
+  "servers": {
+    "echo-mac": {
+      "type": "stdio",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "${workspaceFolder}/src/mcp-echo.py"
+      ],
+      "cwd": "${workspaceFolder}"
+    },
+    "get_time": {
+      "type": "stdio",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "${workspaceFolder}/src/get_time.py"
+      ],
+      "cwd": "${workspaceFolder}"
+    },
+    "calculate": {
+      "type": "stdio",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "args": [
+        "${workspaceFolder}/src/calculate.py"
+      ],
+      "cwd": "${workspaceFolder}"
+    }
+    {
+    "jira": {
+      "type": "http",
+      "url": "https://mcp.epam.com/mcp/jira"
+    }
+  }
+  }
+}
