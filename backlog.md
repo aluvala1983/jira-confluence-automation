@@ -20,10 +20,10 @@ Status note: this is a working local demo of the weekly status workflow, not a l
 - [x] Define project configuration model [custom skill]
   - Create a config structure for Jira base URL, project key, timezone, issue type mappings, done statuses, blocker signals, and planning source.
   - Keep configuration local to the machine; do not persist PATs.
-- [ ] Set up environment and local-run workflow [custom skill]
+- [x] Set up environment and local-run workflow [custom skill]
   - Create a repeatable local run command for the app.
   - Document how to start the server on `127.0.0.1` and how to stop it.
-- [ ] Establish the initial project folders and conventions [custom skill]
+- [ ] Establish the initial project folders and conventions [custom skill] [GitHub issue #1]
   - Create directories for routes, forms, services, templates, and report rendering.
   - Add helper modules for validation, Jira API access, and Markdown rendering.
 
