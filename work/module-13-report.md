@@ -27,13 +27,11 @@
         "${workspaceFolder}/src/calculate.py"
       ],
       "cwd": "${workspaceFolder}"
-    }
-    {
+    },
     "jira": {
       "type": "http",
       "url": "https://mcp.epam.com/mcp/jira"
     }
-  }
   }
 }
 ```
@@ -47,6 +45,4 @@
 ## MCP Tool Test
 - Tool used: get_time
 - Output:
-```text
-2026-10-13T15:08:49.548421+00:00
-```
+2026-10-13T15:12:47.040793+00:00
