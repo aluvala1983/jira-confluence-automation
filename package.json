@@ -1,0 +1,13 @@
+{
+  "name": "weekly-jira-report-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace @weekly-report/api",
+    "dev:web": "npm run dev --workspace @weekly-report/web",
+    "build:web": "npm run build --workspace @weekly-report/web"
+  }
+}

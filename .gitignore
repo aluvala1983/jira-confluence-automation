@@ -11,3 +11,7 @@ instance/
 build/
 dist/
 *.egg-info/
+node_modules/
+apps/web/dist/
+.env*
+!.env.example
