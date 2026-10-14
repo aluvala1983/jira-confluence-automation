@@ -74,7 +74,7 @@ Status note: this is a working local demo of the weekly status workflow, not a l
   - Prompt for the user's PAT only during a generation request.
   - Keep the PAT in memory only for the active request and clear the reference afterward.
   - Surface clear errors for invalid credentials or insufficient access.
-- [ ] Implement Jira API client [MCP]
+- [ ] Implement Jira API client [MCP] (Approach 3)
   - Build a client for Jira Data Center/Server REST endpoints.
   - Add pagination handling to fetch complete result sets.
   - Handle rate-limit and API errors without reporting partial success as complete.
@@ -82,15 +82,15 @@ Status note: this is a working local demo of the weekly status workflow, not a l
   - Verify the base URL, project access, permissions, and field availability.
   - Confirm that required issue types, statuses, and changelog access exist.
   - Surface specific error messages for auth, project, field, or changelog failures.
-- [ ] Implement issue filtering and normalization [MCP]
+- [ ] Implement issue filtering and normalization [MCP] (Approach 3)
   - Include stories, bugs, and tasks; exclude subtasks.
   - Normalize issue records for counts and summaries.
   - Filter issues based on the configured project and reporting window.
-- [ ] Implement completed-work logic using changelog history [MCP]
+- [ ] Implement completed-work logic using changelog history [MCP] (Approach 3)
   - Use status-change history to count issues with a configured done status during the reporting period.
   - Handle reopened issues and repeated transitions consistently.
   - Avoid double counting a single issue in the same reporting period.
-- [ ] Implement remaining-open logic [MCP]
+- [ ] Implement remaining-open logic [MCP] (Approach 3)
   - Count in-scope issues that are not in a configured done status at generation time.
   - Keep output aligned with project configuration and reporting-period boundaries.
 - [ ] Implement next-week planning logic [MCP]
@@ -111,25 +111,25 @@ Status note: this is a working local demo of the weekly status workflow, not a l
 
 ## Phase 4: Testing
 
-- [ ] Write unit tests for config and date logic [custom skill]
+- [ ] Write unit tests for config and date logic [custom skill] (Approach 3)
   - Validate reporting-period calculations across week boundaries.
   - Test required field validation and error handling.
-- [ ] Write unit tests for Jira filtering and normalization [custom skill]
+- [ ] Write unit tests for Jira filtering and normalization [custom skill] (Approach 3)
   - Test story/bug/task filtering and subtask exclusion.
   - Validate normalization of issue payloads and counts.
-- [ ] Write unit tests for completed/open/planning logic [custom skill]
+- [ ] Write unit tests for completed/open/planning logic [custom skill] (Approach 3)
   - Confirm completed counts use status history and avoid double counting.
   - Validate remaining-open logic and next-week plan logic.
-- [ ] Write unit tests for report rendering [custom skill]
+- [ ] Write unit tests for report rendering [custom skill] (Approach 3)
   - Test both customer and leadership Markdown outputs.
   - Verify audience-specific exclusion rules and headings.
-- [ ] Write tests for safe file output [custom skill]
+- [ ] Write tests for safe file output [custom skill] (Approach 3)
   - Ensure write failures are surfaced clearly.
   - Confirm report filenames avoid silent overwrite.
-- [ ] Add integration-test coverage for the API flow [custom skill]
+- [ ] Add integration-test coverage for the API flow [custom skill] (Approach 3)
   - Mock Jira responses for success and failure paths.
   - Verify pagination, rate-limit handling, and invalid credential errors.
-- [ ] Run end-to-end smoke tests locally [custom skill]
+- [ ] Run end-to-end smoke tests locally [custom skill] (Approach 3)
   - Validate the full workflow from config to report generation.
   - Confirm the generated Markdown files are saved correctly and displayed in the UI.
 
