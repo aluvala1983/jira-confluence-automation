@@ -26,6 +26,14 @@ Status note: this is a working local demo of the weekly status workflow, not a l
 - [ ] Establish the initial project folders and conventions [custom skill] [GitHub issue #1]
   - Create directories for routes, forms, services, templates, and report rendering.
   - Add helper modules for validation, Jira API access, and Markdown rendering.
+- [ ] Implement robust error handling and logging configuration [custom skill]
+  - Set up Python's standard `logging` module to capture app startup, configuration warnings, and Jira API request failures.
+  - Add fallback responses or clear error pages for unhandled exceptions during local execution.
+- [ ] Add basic unit tests for Jira API service and validation helpers [custom skill]
+  - Create a `tests/` directory with `pytest` test cases for configuration parsing and mock Jira API responses.
+  - Verify test execution workflow using the command line.
+- [ ] Create a local README and developer runbook [custom skill]
+  - Document prerequisites (Python version, virtual environment setup), how to configure local environment variables or config files, and troubleshooting tips for local deployment.
 
 ## Phase 2: Core Features
 
