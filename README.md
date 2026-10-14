@@ -25,9 +25,10 @@ npm run dev:web
 Open the frontend at <http://127.0.0.1:5173>. Its API health indicator checks
 the backend at <http://127.0.0.1:3001/api/health>.
 
-The API binds only to `127.0.0.1`. Do not persist Jira personal access tokens
-in files, browser storage, or logs; future Jira requests should submit the
-token only for the active generation request.
+The API binds only to `127.0.0.1`. It serves a clearly labeled synthetic
+dataset at `GET /api/report-data`; the health endpoint identifies this as
+`local-fixture` mode. Jira integration is disabled, and the prototype does not
+connect to Jira or use live project data.
 
 ### Run with Podman Compose
 

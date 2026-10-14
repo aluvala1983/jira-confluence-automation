@@ -13,7 +13,13 @@ export default function App() {
         }
         return response.json();
       })
-      .then((health) => setApiStatus(`API ${health.status}`))
+      .then((health) =>
+        setApiStatus(
+          health.dataSource === "local-fixture"
+            ? `API ${health.status} · local demo data`
+            : `API ${health.status}`,
+        ),
+      )
       .catch((error) => {
         if (error.name !== "AbortError") {
           setApiStatus("API unavailable");
@@ -35,7 +41,8 @@ export default function App() {
         {apiStatus}
       </section>
       <p className="note">
-        Jira connection and report generation will be added in a later step.
+        Jira integration is disabled. The API serves clearly labeled local demo
+        data; report generation is not implemented yet.
       </p>
     </main>
   );

@@ -1,0 +1,36 @@
+{
+  "source": "local-fixture",
+  "synthetic": true,
+  "project": {
+    "key": "DEMO",
+    "name": "Synthetic Demo Project"
+  },
+  "reportingPeriod": {
+    "start": "2026-10-05",
+    "endExclusive": "2026-10-12",
+    "timezone": "UTC"
+  },
+  "issues": [
+    {
+      "key": "DEMO-101",
+      "summary": "Prepare the sample release checklist",
+      "issueType": "Story",
+      "status": "Done",
+      "completedAt": "2026-10-06T10:00:00Z"
+    },
+    {
+      "key": "DEMO-102",
+      "summary": "Add a local report preview",
+      "issueType": "Task",
+      "status": "In Progress",
+      "completedAt": null
+    },
+    {
+      "key": "DEMO-103",
+      "summary": "Resolve a sample blocked task",
+      "issueType": "Bug",
+      "status": "Blocked",
+      "completedAt": null
+    }
+  ]
+}
