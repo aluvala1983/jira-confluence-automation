@@ -23,7 +23,7 @@ Status note: this is a working local demo of the weekly status workflow, not a l
 - [x] Set up environment and local-run workflow [custom skill]
   - Create a repeatable local run command for the app.
   - Document how to start the server on `127.0.0.1` and how to stop it.
-- [ ] Establish the initial project folders and conventions [custom skill] [GitHub issue #1]
+- [ ] Establish the initial project folders and conventions [custom skill]
   - Create directories for routes, forms, services, templates, and report rendering.
   - Add helper modules for validation, Jira API access, and Markdown rendering.
 - [ ] Implement robust error handling and logging configuration [custom skill]
