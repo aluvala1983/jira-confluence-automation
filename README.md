@@ -28,3 +28,16 @@ the backend at <http://127.0.0.1:3001/api/health>.
 The API binds only to `127.0.0.1`. Do not persist Jira personal access tokens
 in files, browser storage, or logs; future Jira requests should submit the
 token only for the active generation request.
+
+### Run with Podman Compose
+
+The compose setup runs only the web and API services; the prototype does not
+need a database. Build and start both services with:
+
+```sh
+podman compose up --build
+```
+
+Open <http://127.0.0.1:5173>. The frontend is published on loopback only; the
+API is reachable by the frontend inside the Compose network and is not
+published to the host. Use `podman compose down` to stop the services.
