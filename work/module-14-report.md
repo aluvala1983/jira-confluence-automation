@@ -27,9 +27,17 @@ Status note: this is a working local demo of the weekly status workflow, not a l
 - [x] Set up environment and local-run workflow [custom skill]
   - Create a repeatable local run command for the app.
   - Document how to start the server on `127.0.0.1` and how to stop it.
-- [ ] Establish the initial project folders and conventions [custom skill] [GitHub issue #1]
+- [ ] Establish the initial project folders and conventions [custom skill] (GitHub issue #2)
   - Create directories for routes, forms, services, templates, and report rendering.
   - Add helper modules for validation, Jira API access, and Markdown rendering.
+- [ ] Implement robust error handling and logging configuration [custom skill] (GitHub issue #3)
+  - Set up Python's standard `logging` module to capture app startup, configuration warnings, and Jira API request failures.
+  - Add fallback responses or clear error pages for unhandled exceptions during local execution.
+- [ ] Add basic unit tests for Jira API service and validation helpers [custom skill] (GitHub issue #5)
+  - Create a `tests/` directory with `pytest` test cases for configuration parsing and mock Jira API responses.
+  - Verify test execution workflow using the command line.
+- [ ] Create a local README and developer runbook [custom skill]
+  - Document prerequisites (Python version, virtual environment setup), how to configure local environment variables or config files, and troubleshooting tips for local deployment.
 
 ## Phase 2: Core Features
 
@@ -164,13 +172,14 @@ This sequence keeps the first pass focused on a working local Flask app and a re
 ## GitHub Issues
 | Issue URL | Title | Created via MCP? |
 |-----------|-------|-----------------|
-| https://github.com/aluvala1983/jira-confluence-automation/issues/1 | close | Yes |
+| https://github.com/aluvala1983/jira-confluence-automation/issues/2 | Establish the initial project folders and conventions | Yes |
+| https://github.com/aluvala1983/jira-confluence-automation/issues/3 | Implement robust error handling and logging configuration | Yes |
+| https://github.com/aluvala1983/jira-confluence-automation/issues/5 | Add fallback responses or clear error pages for unhandled exceptions | Yes |
 
 ## MCP Tools Used
-- github-mcp-server-get_file_contents
-- github-mcp-server-get_label
+- github-get_me
+- github-get_label
 - github-issue_write
-- github-mcp-server-search_issues
+- github-mcp-server-actions_list
 - github-mcp-server-list_issues
 - github-mcp-server-issue_read
-- github-add_issue_comment
